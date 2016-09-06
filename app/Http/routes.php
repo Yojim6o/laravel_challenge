@@ -11,29 +11,15 @@
 |
 */
 
-Route::get('/', 'Controller@get_data');
+Route::get('/', function() {
+    $articles = DB::table('articles')->get();
 
-// Route::get('/', function() {
-//     $projects = DB::table('projects')->get();
+    return View::make('welcome')->with('articles', $articles);
+});
 
-//     return View::make('welcome')->with('projects', $projects);
-// });
+Route::post('add', 'Controller@get_data');
 
-// Route::post('add', function() {
-//     $name = htmlspecialchars($_POST["name"]);
-
-//     if (DB::table('projects')->whereName($name)->first() !== null) return 'Already Exists!';
-
-//     DB::table('projects')->insert(array('name' => $name));
-
-//     return Redirect::to('/');
-// });
-
-// Route::post('donate', function() {
-//     $donation = htmlspecialchars($_POST["donation"]);
-//     $id = htmlspecialchars($_POST["id"]);
-
-//     DB::table('projects')->where('id', $id)->increment('money', $donation);
-
-//     return Redirect::to('/');
-// });
+Route::get('article/{id}', function($id) {
+    $article = DB::table('articles')->where('id', $id)->first();
+    return View::make('article')->with('article', $article);
+});

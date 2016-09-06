@@ -12,7 +12,8 @@ class Controller extends BaseController {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
     public function get_data() {
-        $file = file_get_contents('http://www.cnn.com/2016/09/05/hotels/dubai-rosemont-hotel-rainforest/index.html');
+        $url = $_POST["url"];
+        $file = file_get_contents($url);
         $dom = new \DOMDocument();
         @$dom->loadHTML($file);
         $domx = new \DOMXPath($dom);
@@ -21,30 +22,32 @@ class Controller extends BaseController {
         $nodeArticle = $domx->evaluate("//div[@class='zn-body__paragraph']");
         $nodeIMG = $domx->evaluate("//img[@class='media__image media__image--responsive']");
 
-        echo $nodeHead[0]->nodeValue;
+        if (\DB::table('articles')->whereUrl($url)->first() !== null) return 'Already Exists!'.'<a href="#">Back</a>';
 
-        echo '<br>';
+        $title = $nodeHead[0]->nodeValue;
 
         if ($nodeIMG[0]) {
             $i = 0;
 
             foreach($nodeIMG as $img) {
-                $src = $img->getAttribute('data-src-full16x9');
+                $maybeSrc = $img->getAttribute('data-src-full16x9');
 
-                if ($src != '') {
-                    echo '<img style="width:200px" src="'.$src.'" />';
+                if ($maybeSrc != '') {
+                    $src = $maybeSrc;
                     break;
                 } elseif(++$i == 5) { break; }
 
             }
         }
 
-        echo '<br>';
-
-        echo $nodeArticleLead[0]->nodeValue;
+        $body = $nodeArticleLead[0]->nodeValue . ' ';
 
         foreach ($nodeArticle as $section) {
-            echo $section->nodeValue . ' ';
+            $body .= $section->nodeValue . ' ';
         };
+
+        \DB::table('articles')->insert(array('url' => $url, 'title' => $title, 'img' => $src, 'body' => $body));
+
+        return \Redirect::to('/');
     }
 }
