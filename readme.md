@@ -18,33 +18,33 @@ Go to [getcomposer.org](https://getcomposer.org/download/) and follow the instru
 
 These instructions will guide you through environment setup with a mySQL database.  If there's a more efficient way to setup the environment, please let me know!
 
-1. With a PHP enviornment set up, cd into your designated projects folder via the terminal.
-2. Clone the repository and run a Composer update
-```
-    > git clone git@github.com:Yojim6o/laravel_challenge.git
-    > cd laravel_challenge
-    > composer update
-```
-3. Rename your .env.example file to .env.
-4. In your .env file, change the following parameters to the appropriate DB credentials
-```
-    > DB_CONNECTION=mysql
-    > DB_HOST=localhost
-    > DB_PORT=3306
-    > DB_DATABASE=database-name
-    > DB_USERNAME=username
-    > DB_PASSWORD=password
-```
-5. Go to config/database.php and change the DB credentials on lines 56-66.
-6. Generate an artisan key.
-```
-    > php artisan key:generate
-```
-7. Run the migration in the terminal.
-```
-    > php artisan migrate
-```
-8. Visit your project within the browser.  With my MAMP settings, I went to [http://localhost:8888/laravel_challenge/public/](http://localhost:8888/laravel_challenge/public/).
+- With a PHP enviornment set up, cd into your designated projects folder via the terminal.
+- Clone the repository and run a Composer update
+    ```
+        > git clone git@github.com:Yojim6o/laravel_challenge.git
+        > cd laravel_challenge
+        > composer update
+    ```
+- Rename your .env.example file to .env.
+- In your .env file, change the following parameters to the appropriate DB credentials
+    ```
+        > DB_CONNECTION=mysql
+        > DB_HOST=localhost
+        > DB_PORT=3306
+        > DB_DATABASE=database-name
+        > DB_USERNAME=username
+        > DB_PASSWORD=password
+    ```
+- Go to config/database.php and change the DB credentials on lines 56-66.
+- Generate an artisan key.
+    ```
+        > php artisan key:generate
+    ```
+- Run the migration in the terminal.
+    ```
+        > php artisan migrate
+    ```
+- Visit your project within the browser.  With my MAMP settings, I went to [http://localhost:8888/laravel_challenge/public/](http://localhost:8888/laravel_challenge/public/).
 
 ## How To Use
 
