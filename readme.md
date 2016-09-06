@@ -20,30 +20,30 @@ These instructions will guide you through environment setup with a mySQL databas
 
 - With a PHP enviornment set up, cd into your designated projects folder via the terminal.
 - Clone the repository and run a Composer update
-    ```
-        > git clone git@github.com:Yojim6o/laravel_challenge.git
-        > cd laravel_challenge
-        > composer update
-    ```
+```
+    > git clone git@github.com:Yojim6o/laravel_challenge.git
+    > cd laravel_challenge
+    > composer update
+```
 - Rename your .env.example file to .env.
 - In your .env file, change the following parameters to the appropriate DB credentials
-    ```
-        > DB_CONNECTION=mysql
-        > DB_HOST=localhost
-        > DB_PORT=3306
-        > DB_DATABASE=database-name
-        > DB_USERNAME=username
-        > DB_PASSWORD=password
-    ```
+```
+    > DB_CONNECTION=mysql
+    > DB_HOST=localhost
+    > DB_PORT=3306
+    > DB_DATABASE=database-name
+    > DB_USERNAME=username
+    > DB_PASSWORD=password
+```
 - Go to config/database.php and change the DB credentials on lines 56-66.
 - Generate an artisan key.
-    ```
-        > php artisan key:generate
-    ```
+```
+    > php artisan key:generate
+```
 - Run the migration in the terminal.
-    ```
-        > php artisan migrate
-    ```
+```
+    > php artisan migrate
+```
 - Visit your project within the browser.  With my MAMP settings, I went to [http://localhost:8888/laravel_challenge/public/](http://localhost:8888/laravel_challenge/public/).
 
 ## How To Use
