@@ -1,27 +1,61 @@
-# Laravel PHP Framework
+# CNN Article Extractor
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This is a web application that accepts a CNN article URL and ships the article text to a database.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
+## Laravel Documentation
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
+## PHP Environment
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+For my PHP environment and MySQL database, I used MAMP, which can be found [here](https://www.mamp.info/).
 
-## Security Vulnerabilities
+## Download Composer
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Go to [getcomposer.org](https://getcomposer.org/download/) and follow the instructions on their download page.
 
-## License
+## Setup
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+These instructions will guide you through environment setup with a mySQL database.  If there's a more efficient way to setup the environment, please let me know!
+
+1. With a PHP enviornment set up, cd into your designated projects folder via the terminal.
+2. Clone the repository and run a Composer update
+```
+    > git clone git@github.com:Yojim6o/laravel_challenge.git
+    > cd laravel_challenge
+    > composer update
+```
+3. Rename your .env.example file to .env.
+4. In your .env file, change the following parameters to the appropriate DB credentials
+```
+    > DB_CONNECTION=mysql
+    > DB_HOST=localhost
+    > DB_PORT=3306
+    > DB_DATABASE=database-name
+    > DB_USERNAME=username
+    > DB_PASSWORD=password
+```
+5. Go to config/database.php and change the DB credentials on lines 56-66.
+6. Generate an artisan key.
+```
+    > php artisan key:generate
+```
+7. Run the migration in the terminal.
+```
+    > php artisan migrate
+```
+8. Visit your project within the browser.  With my MAMP settings, I went to [http://localhost:8888/laravel_challenge/public/](http://localhost:8888/laravel_challenge/public/).
+
+## How To Use
+
+1. In the input field, past a CNN article URL (ie. [http://www.cnn.com/2016/09/06/us/chicago-homicides-visual-guide/index.html](http://www.cnn.com/2016/09/06/us/chicago-homicides-visual-guide/index.html)).
+2. Click Submit.
+3. The title of the article will appear below the submit button.
+4. You can click on the article title to view the article details or keep adding articles
+5. The article page will show the title, image, and article body.
+
+## Issues?
+
+Please let me know!  I will continue to refactor and improve the application.
+
+
