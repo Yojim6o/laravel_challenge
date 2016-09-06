@@ -1,45 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Laravel</title>
+<head>
+    <title>My App</title>
+</head>
+<body>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <form action="add" method="post">
+        Paste in a CNN.COM article URL<br>
+        <input type="text" name="name"><br>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="submit" name="Send Data!">
+    </form>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+    <?php foreach($projects as $project) { ?>
+        <div>
+            <?php echo $project->name; ?> ( <?php echo $project->money; ?> $ )
         </div>
-    </body>
+    <?php } ?>
+</body>
 </html>

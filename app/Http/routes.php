@@ -11,11 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return 'you have arrived';
-});
+Route::get('/', 'Controller@get_data');
 
+// Route::get('/', function() {
+//     $projects = DB::table('projects')->get();
 
-Route::get('milkshakes', function () {
-    return 'milkshakes are nice';
-});
+//     return View::make('welcome')->with('projects', $projects);
+// });
+
+// Route::post('add', function() {
+//     $name = htmlspecialchars($_POST["name"]);
+
+//     if (DB::table('projects')->whereName($name)->first() !== null) return 'Already Exists!';
+
+//     DB::table('projects')->insert(array('name' => $name));
+
+//     return Redirect::to('/');
+// });
+
+// Route::post('donate', function() {
+//     $donation = htmlspecialchars($_POST["donation"]);
+//     $id = htmlspecialchars($_POST["id"]);
+
+//     DB::table('projects')->where('id', $id)->increment('money', $donation);
+
+//     return Redirect::to('/');
+// });
